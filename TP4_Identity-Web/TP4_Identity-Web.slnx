@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TP4_Identity-Seeder/TP4_Identity-Seeder.csproj" />
+  <Project Path="TP4_Identity-Web/TP4_Identity-Web.csproj" />
+</Solution>
