@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 500" width="1920" height="500">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f1e;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#1a2744;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a3d1a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a3a4a" />
+      <stop offset="100%" style="stop-color:#1a1a2a" />
+    </linearGradient>
+    <linearGradient id="towerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4c89a" />
+      <stop offset="100%" style="stop-color:#8a7a4a" />
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fffbe0;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ffd700;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="1920" height="500" fill="url(#skyGrad)"/>
+
+  <!-- Stars -->
+  <g fill="white" opacity="0.8">
+    <circle cx="100" cy="40" r="1.5"/><circle cx="250" cy="20" r="1"/><circle cx="400" cy="60" r="1.5"/>
+    <circle cx="550" cy="30" r="1"/><circle cx="700" cy="50" r="2"/><circle cx="850" cy="15" r="1"/>
+    <circle cx="1000" cy="45" r="1.5"/><circle cx="1150" cy="25" r="1"/><circle cx="1300" cy="55" r="2"/>
+    <circle cx="1450" cy="35" r="1.5"/><circle cx="1600" cy="20" r="1"/><circle cx="1750" cy="50" r="1.5"/>
+    <circle cx="1850" cy="30" r="1"/><circle cx="180" cy="80" r="1"/><circle cx="320" cy="70" r="1.5"/>
+    <circle cx="480" cy="90" r="1"/><circle cx="630" cy="75" r="1.5"/><circle cx="780" cy="85" r="1"/>
+    <circle cx="920" cy="65" r="1.5"/><circle cx="1070" cy="80" r="1"/><circle cx="1220" cy="70" r="1.5"/>
+    <circle cx="1370" cy="90" r="1"/><circle cx="1520" cy="75" r="1.5"/><circle cx="1670" cy="60" r="1"/>
+    <circle cx="1820" cy="85" r="1.5"/>
+  </g>
+
+  <!-- Moon glow -->
+  <circle cx="1600" cy="80" r="100" fill="url(#moonGlow)" opacity="0.6"/>
+  <!-- Moon -->
+  <circle cx="1600" cy="80" r="45" fill="#fffbe0" filter="url(#softGlow)"/>
+  <circle cx="1620" cy="65" r="38" fill="#1a2744"/>
+
+  <!-- Far mountains -->
+  <polygon points="0,380 120,200 240,320 360,180 480,280 600,160 720,260 840,140 960,240 1080,160 1200,280 1320,180 1440,300 1560,200 1680,320 1800,180 1920,280 1920,500 0,500" 
+           fill="url(#mountainGrad)" opacity="0.7"/>
+
+  <!-- Mid mountains -->
+  <polygon points="0,420 150,280 300,360 450,240 600,340 750,220 900,320 1050,200 1200,320 1350,260 1500,360 1650,240 1800,350 1920,300 1920,500 0,500" 
+           fill="#252535" opacity="0.9"/>
+
+  <!-- Ground / foreground hill -->
+  <ellipse cx="960" cy="520" rx="1100" ry="160" fill="#1a2a0a"/>
+
+  <!-- Minas Tirith - White City (layered tiers) -->
+  <!-- Base tier -->
+  <rect x="800" y="280" width="320" height="160" rx="4" fill="url(#towerGrad)" opacity="0.95"/>
+  <!-- Tier 2 -->
+  <rect x="840" y="220" width="240" height="80" rx="4" fill="#c8b880"/>
+  <!-- Tier 3 -->
+  <rect x="870" y="170" width="180" height="70" rx="4" fill="#d4c890"/>
+  <!-- Tier 4 -->
+  <rect x="900" y="130" width="120" height="60" rx="4" fill="#ddd0a0"/>
+  <!-- Citadel peak -->
+  <rect x="930" y="80" width="60" height="70" rx="3" fill="#e8ddb0" filter="url(#glow)"/>
+  <!-- Tower of Ecthelion (tallest spire) -->
+  <rect x="953" y="30" width="14" height="60" fill="#f0e8c0" filter="url(#glow)"/>
+  <polygon points="953,30 960,5 967,30" fill="#f0e8c0" filter="url(#glow)"/>
+  <!-- White flame at top -->
+  <ellipse cx="960" cy="5" rx="5" ry="8" fill="#fff8d0" opacity="0.9" filter="url(#softGlow)"/>
+
+  <!-- Windows / lights on tiers -->
+  <g fill="#fff5a0" opacity="0.7" filter="url(#glow)">
+    <rect x="820" y="295" width="6" height="8"/><rect x="840" y="295" width="6" height="8"/>
+    <rect x="860" y="295" width="6" height="8"/><rect x="880" y="295" width="6" height="8"/>
+    <rect x="900" y="295" width="6" height="8"/><rect x="920" y="295" width="6" height="8"/>
+    <rect x="940" y="295" width="6" height="8"/><rect x="960" y="295" width="6" height="8"/>
+    <rect x="980" y="295" width="6" height="8"/><rect x="1000" y="295" width="6" height="8"/>
+    <rect x="850" y="235" width="5" height="7"/><rect x="870" y="235" width="5" height="7"/>
+    <rect x="895" y="235" width="5" height="7"/><rect x="915" y="235" width="5" height="7"/>
+  </g>
+
+  <!-- Gate of Minas Tirith (dark arch) -->
+  <rect x="938" y="380" width="44" height="60" fill="#0a0a14"/>
+  <path d="M938,380 Q960,355 982,380" fill="#0a0a14"/>
+
+  <!-- Foreground trees/silhouettes left -->
+  <rect x="50" y="380" width="8" height="90" fill="#0d1a05"/>
+  <ellipse cx="54" cy="370" rx="28" ry="35" fill="#0d1a05"/>
+  <rect x="140" y="400" width="6" height="70" fill="#0d1a05"/>
+  <ellipse cx="143" cy="390" rx="20" ry="28" fill="#0d1a05"/>
+  <rect x="200" y="390" width="7" height="80" fill="#0d1a05"/>
+  <ellipse cx="203" cy="378" rx="25" ry="32" fill="#0d1a05"/>
+
+  <!-- Foreground trees/silhouettes right -->
+  <rect x="1720" y="380" width="8" height="90" fill="#0d1a05"/>
+  <ellipse cx="1724" cy="370" rx="28" ry="35" fill="#0d1a05"/>
+  <rect x="1800" y="400" width="6" height="70" fill="#0d1a05"/>
+  <ellipse cx="1803" cy="390" rx="20" ry="28" fill="#0d1a05"/>
+  <rect x="1860" y="390" width="7" height="80" fill="#0d1a05"/>
+  <ellipse cx="1863" cy="378" rx="25" ry="32" fill="#0d1a05"/>
+
+  <!-- Bottom dark ground -->
+  <rect x="0" y="430" width="1920" height="70" fill="#0a1205" opacity="0.95"/>
+
+  <!-- Text overlay -->
+  <text x="960" y="468" font-family="Georgia, serif" font-size="22" fill="#c8a84a" text-anchor="middle" letter-spacing="8" opacity="0.9">GUERRIERS DU GONDOR</text>
+
+  <!-- Main title -->
+  <text x="200" y="380" font-family="Georgia, serif" font-size="52" fill="#d4af37" text-anchor="start" filter="url(#glow)" font-weight="bold">Minas Tirith</text>
+  <text x="200" y="420" font-family="Georgia, serif" font-size="22" fill="#a09060" text-anchor="start" letter-spacing="3">La Cité Blanche du Gondor</text>
+
+  <!-- Decorative line -->
+  <line x1="150" y1="435" x2="650" y2="435" stroke="#c8a84a" stroke-width="1" opacity="0.5"/>
+</svg>

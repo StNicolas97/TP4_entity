@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 500" width="1920" height="500">
+  <defs>
+    <linearGradient id="skyHobbit" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4a7a;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#e87030;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#f0a050;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a7a30;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fff8d0;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#ffcc30;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff8020;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glowH">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sunBlur">
+      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky - sunset -->
+  <rect width="1920" height="500" fill="url(#skyHobbit)"/>
+
+  <!-- Sun glow (setting sun, golden hour) -->
+  <circle cx="1400" cy="200" r="200" fill="url(#sunGrad)" opacity="0.6"/>
+  <circle cx="1400" cy="200" r="65" fill="#fff5b0" filter="url(#sunBlur)"/>
+  <circle cx="1400" cy="200" r="50" fill="#ffee90"/>
+
+  <!-- Clouds -->
+  <g fill="#ff9040" opacity="0.5">
+    <ellipse cx="300" cy="100" rx="120" ry="35"/>
+    <ellipse cx="380" cy="95" rx="90" ry="30"/>
+    <ellipse cx="220" cy="105" rx="80" ry="28"/>
+  </g>
+  <g fill="#ffb060" opacity="0.4">
+    <ellipse cx="700" cy="80" rx="140" ry="30"/>
+    <ellipse cx="790" cy="75" rx="100" ry="25"/>
+    <ellipse cx="610" cy="85" rx="80" ry="22"/>
+  </g>
+  <g fill="#ff8030" opacity="0.3">
+    <ellipse cx="1650" cy="120" rx="120" ry="28"/>
+    <ellipse cx="1730" cy="115" rx="80" ry="22"/>
+  </g>
+
+  <!-- Rolling hills (far) -->
+  <path d="M0,350 Q200,250 400,300 Q600,350 800,260 Q1000,180 1200,270 Q1400,340 1600,260 Q1800,200 1920,280 L1920,500 L0,500 Z" 
+        fill="#3a6a20" opacity="0.8"/>
+  <path d="M0,370 Q150,290 350,330 Q550,370 750,290 Q950,220 1100,300 Q1300,360 1500,290 Q1700,230 1920,310 L1920,500 L0,500 Z" 
+        fill="#4a7a28"/>
+
+  <!-- The Shire hills - main rolling greens -->
+  <path d="M0,400 Q200,330 380,370 Q560,400 720,340 Q880,290 1040,350 Q1200,400 1400,340 Q1550,300 1700,360 Q1820,400 1920,380 L1920,500 L0,500 Z" 
+        fill="#5a8a30"/>
+
+  <!-- Flower field -->
+  <g fill="#ffd020" opacity="0.6">
+    <circle cx="200" cy="395" r="4"/><circle cx="240" cy="400" r="3"/><circle cx="260" cy="390" r="4"/>
+    <circle cx="300" cy="398" r="3"/><circle cx="330" cy="393" r="4"/><circle cx="360" cy="400" r="3"/>
+    <circle cx="1600" cy="390" r="4"/><circle cx="1640" cy="395" r="3"/><circle cx="1680" cy="388" r="4"/>
+    <circle cx="1720" cy="396" r="3"/><circle cx="1760" cy="391" r="4"/>
+  </g>
+  <g fill="#ff6080" opacity="0.5">
+    <circle cx="220" cy="405" r="3"/><circle cx="270" cy="398" r="3"/><circle cx="310" cy="405" r="3"/>
+    <circle cx="1620" cy="400" r="3"/><circle cx="1660" cy="396" r="3"/>
+  </g>
+
+  <!-- Bag End Hill (the famous round door) -->
+  <!-- Main hill -->
+  <ellipse cx="960" cy="460" rx="280" ry="130" fill="#3d7a22"/>
+  <!-- Smaller path hill -->
+  <path d="M750,390 Q850,360 960,365 Q1070,360 1170,390 Q1100,430 960,440 Q820,430 750,390Z" fill="#4a8a28"/>
+
+  <!-- Hobbit hole door frame (round) - iconic green door -->
+  <circle cx="960" cy="390" r="52" fill="#5a3010"/>
+  <circle cx="960" cy="390" r="48" fill="#2a5810"/>
+  <circle cx="960" cy="390" r="44" fill="#3a7018"/>
+  <!-- Door panels -->
+  <path d="M916,390 A44,44 0 0,1 1004,390 L1004,430 Q960,445 916,430 Z" fill="#1a4a08"/>
+  <!-- Door knob -->
+  <circle cx="975" cy="392" r="5" fill="#d4a020" filter="url(#glowH)"/>
+  <!-- Door knocker -->
+  <circle cx="960" cy="370" r="7" fill="none" stroke="#c89020" stroke-width="2.5"/>
+  <circle cx="960" cy="381" r="3" fill="#c89020"/>
+  <!-- Arch detail -->
+  <path d="M916,390 A44,44 0 0,1 1004,390" fill="none" stroke="#4a2808" stroke-width="3"/>
+  <!-- Windows beside door -->
+  <circle cx="905" cy="375" r="18" fill="#5a3010"/>
+  <circle cx="905" cy="375" r="15" fill="#2a5810"/>
+  <circle cx="905" cy="375" r="12" fill="#d4b870" opacity="0.8" filter="url(#glowH)"/>
+  <!-- Window cross -->
+  <line x1="905" y1="363" x2="905" y2="387" stroke="#8a6020" stroke-width="1.5"/>
+  <line x1="893" y1="375" x2="917" y2="375" stroke="#8a6020" stroke-width="1.5"/>
+  <circle cx="1015" cy="375" r="18" fill="#5a3010"/>
+  <circle cx="1015" cy="375" r="15" fill="#2a5810"/>
+  <circle cx="1015" cy="375" r="12" fill="#d4b870" opacity="0.8" filter="url(#glowH)"/>
+  <line x1="1015" y1="363" x2="1015" y2="387" stroke="#8a6020" stroke-width="1.5"/>
+  <line x1="1003" y1="375" x2="1027" y2="375" stroke="#8a6020" stroke-width="1.5"/>
+
+  <!-- Chimney -->
+  <rect x="985" y="315" width="16" height="40" rx="2" fill="#8a6040"/>
+  <!-- Smoke -->
+  <path d="M993,315 Q998,295 990,278 Q985,265 995,252" fill="none" stroke="#c8b8a0" stroke-width="4" opacity="0.5" stroke-linecap="round"/>
+  <path d="M993,315 Q1003,300 998,285 Q992,270 1002,258" fill="none" stroke="#c8b8a0" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- Garden - flowers and fence -->
+  <!-- Picket fence -->
+  <g fill="#d4c090" stroke="#b8a070" stroke-width="1">
+    <rect x="740" y="415" width="6" height="30" rx="1"/>
+    <rect x="755" y="413" width="6" height="32" rx="1"/>
+    <rect x="770" y="415" width="6" height="30" rx="1"/>
+    <rect x="785" y="413" width="6" height="32" rx="1"/>
+    <rect x="800" y="415" width="6" height="30" rx="1"/>
+    <rect x="1114" y="415" width="6" height="30" rx="1"/>
+    <rect x="1129" y="413" width="6" height="32" rx="1"/>
+    <rect x="1144" y="415" width="6" height="30" rx="1"/>
+    <rect x="1159" y="413" width="6" height="32" rx="1"/>
+    <rect x="1174" y="415" width="6" height="30" rx="1"/>
+  </g>
+  <!-- Fence rails -->
+  <rect x="740" y="420" width="72" height="3" fill="#c0a860"/>
+  <rect x="740" y="432" width="72" height="3" fill="#c0a860"/>
+  <rect x="1114" y="420" width="72" height="3" fill="#c0a860"/>
+  <rect x="1114" y="432" width="72" height="3" fill="#c0a860"/>
+
+  <!-- Garden flowers -->
+  <g>
+    <circle cx="830" cy="408" r="5" fill="#ff6888"/>
+    <circle cx="845" cy="412" r="4" fill="#ffaa20"/>
+    <circle cx="856" cy="407" r="5" fill="#ff4488"/>
+    <circle cx="1090" cy="408" r="5" fill="#ff6888"/>
+    <circle cx="1075" cy="412" r="4" fill="#ffaa20"/>
+    <circle cx="1064" cy="407" r="5" fill="#ff4488"/>
+  </g>
+
+  <!-- Oak tree left -->
+  <rect x="620" y="330" width="12" height="110" fill="#5a3810"/>
+  <ellipse cx="626" cy="310" rx="65" ry="55" fill="#2a6010"/>
+  <ellipse cx="600" cy="300" rx="45" ry="40" fill="#358018"/>
+  <ellipse cx="650" cy="305" rx="45" ry="40" fill="#2d7015"/>
+
+  <!-- Oak tree right -->
+  <rect x="1288" y="330" width="12" height="110" fill="#5a3810"/>
+  <ellipse cx="1294" cy="310" rx="65" ry="55" fill="#2a6010"/>
+  <ellipse cx="1268" cy="300" rx="45" ry="40" fill="#358018"/>
+  <ellipse cx="1318" cy="305" rx="45" ry="40" fill="#2d7015"/>
+
+  <!-- Path leading to door -->
+  <path d="M960,445 Q940,455 910,470 Q880,480 860,490" fill="none" stroke="#c0a040" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+  <path d="M960,445 Q980,455 1010,470 Q1040,480 1060,490" fill="none" stroke="#c0a040" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Ground -->
+  <rect x="0" y="470" width="1920" height="30" fill="#2a5010" opacity="0.95"/>
+
+  <!-- Text -->
+  <text x="960" y="495" font-family="Georgia, serif" font-size="20" fill="#c8e860" text-anchor="middle" letter-spacing="8" opacity="0.9">HOBBITS DE LA COMTÉ</text>
+  <text x="200" y="420" font-family="Georgia, serif" font-size="52" fill="#f0d840" text-anchor="start" filter="url(#glowH)" font-weight="bold">Cul-de-Sac</text>
+  <text x="200" y="458" font-family="Georgia, serif" font-size="22" fill="#a09820" text-anchor="start" letter-spacing="3">Le Foyer de la Comté</text>
+  <line x1="150" y1="466" x2="580" y2="466" stroke="#c0b030" stroke-width="1" opacity="0.5"/>
+</svg>
