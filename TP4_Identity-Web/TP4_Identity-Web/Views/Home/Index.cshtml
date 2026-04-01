@@ -1,108 +1,329 @@
-﻿@using TP4_Identity_Web.ViewModels.Home
+@using TP4_Identity_Web.ViewModels.Home
 @model AccueilVM
 
 @{
     ViewData["Title"] = "Bienvenue en Terre du Milieu";
+    ViewData["BodyClass"] = "lotr-home-body";
 }
-<br />
-<br />
-<div class="container-fluid px-0">
-    <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="~/images/banner-gondor.svg" class="d-block w-100" alt="Image 1" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/images/banner-elfes.svg" class="d-block w-100" alt="Image 2" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/images/banner-hobbits.svg" class="d-block w-100" alt="Image 3" />
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/lotr-home.css" asp-append-version="true" />
+}
+
+<div class="lotr-page-wrapper">
+
+    <!-- ================================================================
+         HERO
+         ================================================================ -->
+    <section class="lotr-hero">
+        <div class="lotr-hero__ring lotr-hero__ring--sm"  aria-hidden="true"></div>
+        <div class="lotr-hero__ring lotr-hero__ring--md"  aria-hidden="true"></div>
+        <div class="lotr-hero__ring lotr-hero__ring--lg"  aria-hidden="true"></div>
+        <div class="lotr-hero__ring lotr-hero__ring--xl"  aria-hidden="true"></div>
+
+        <div class="lotr-hero__content container">
+            <span class="lotr-hero__eyebrow">Portail d'Identité — Terre du Milieu</span>
+
+            <h1 class="lotr-hero__title">
+                Un Anneau pour les gouverner tous
+                <span class="lotr-hero__title-accent">et dans les ténèbres les lier</span>
+            </h1>
+
+            <div class="lotr-hero__divider" aria-hidden="true"></div>
+
+            <p class="lotr-hero__desc">
+                Rejoignez la Communauté. Choisissez votre peuple. Accédez à votre destin
+                au cœur de la Terre du Milieu.
+            </p>
+
+            <div class="lotr-hero__actions">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="lotr-btn-primary">
+                        Mon Tableau de Bord
+                    </a>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Register" class="lotr-btn-primary">
+                        Rejoindre la Communauté
+                    </a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="lotr-btn-secondary">
+                        Se Connecter
+                    </a>
+                }
             </div>
         </div>
-    </div>
-</div>
 
-
-<br />
-<br />
-<div class="container text-center">
-    <div class="row justify-content-md-center">
-        <div class="col col-lg-2">
-            
+        <div class="lotr-hero__scroll" aria-hidden="true">
+            <span class="lotr-hero__scroll-label">Découvrir</span>
+            <div class="lotr-hero__scroll-line"></div>
         </div>
-        <div class="col-md-auto">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <h3 class="card-header">Guerriers</h3>
-                            <div class="card-body">
-                                <h5 class="card-title">Guerriers du Gondor</h5>
-                                <h6 class="card-subtitle text-muted">...</h6>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                                <rect width="100%" height="100%" fill="#868e96"></rect>
-                                <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Défenseurs de Minas Tirith. Soldats, Capitaines et Intendants
-                                    gardent la Cité Blanche contre les forces du Mordor.
-                                </p>
-                            </div>
+    </section>
 
-                        </div>
+    <!-- ================================================================
+         PRÉSENTATION DU PROJET
+         ================================================================ -->
+    <section class="lotr-section" id="presentation">
+        <div class="container">
 
+            <div class="text-center lotr-reveal">
+                <span class="lotr-section__label">À propos du projet</span>
+                <h2 class="lotr-section__title">Le Portail de la Terre du Milieu</h2>
+                <div class="lotr-divider" aria-hidden="true"></div>
+                <p class="lotr-section__subtitle">
+                    Un système d'authentification digne des grandes épopées de l'Âge Troisième,
+                    bâti sur les fondations solides d'ASP.NET Core Identity.
+                </p>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <div class="col-md-4 lotr-reveal lotr-reveal--d1">
+                    <div class="lotr-mini-card">
+                        <span class="lotr-mini-card__icon" aria-hidden="true">⚔️</span>
+                        <h3 class="lotr-mini-card__title">Identité Vérifiée</h3>
+                        <p class="lotr-mini-card__text">
+                            Chaque habitant de la Terre du Milieu possède une identité unique,
+                            protégée par les arts anciens de l'authentification sécurisée.
+                        </p>
                     </div>
-
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <h3 class="card-header">Elfes</h3>
-                            <div class="card-body">
-                                <h5 class="card-title">Elfes</h5>
-                                <h6 class="card-subtitle text-muted">...</h6>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                                <rect width="100%" height="100%" fill="#868e96"></rect>
-                                <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Immortels et sages, venus de Lórien ou de la Forêt Noire.
-                                    Gardiens des Archives d'Imladris et protecteurs des anciens savoirs.
-                                </p>
-                            </div>
-
-                        </div>
-
+                </div>
+                <div class="col-md-4 lotr-reveal lotr-reveal--d2">
+                    <div class="lotr-mini-card">
+                        <span class="lotr-mini-card__icon" aria-hidden="true">🏰</span>
+                        <h3 class="lotr-mini-card__title">Rôles &amp; Hiérarchies</h3>
+                        <p class="lotr-mini-card__text">
+                            Soldats, Capitaines, Intendants — chaque rang ouvre des portes différentes.
+                            Le système de rôles garantit une gouvernance précise des accès.
+                        </p>
                     </div>
-
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <h3 class="card-header">Hobbits</h3>
-                            <div class="card-body">
-                                <h5 class="card-title">Hobbits de la Comté</h5>
-                                <h6 class="card-subtitle text-muted">...</h6>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                                <rect width="100%" height="100%" fill="#868e96"></rect>
-                                <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Paisibles habitants de Hobbiton, Cul-de-Sac, Lézeau et Bouc-de-l'Est.
-                                    Jardiniers, Agriculteurs, Cuisiniers et Messagers.
-                                </p>
-                            </div>
-
-                        </div>
-
+                </div>
+                <div class="col-md-4 lotr-reveal lotr-reveal--d3">
+                    <div class="lotr-mini-card">
+                        <span class="lotr-mini-card__icon" aria-hidden="true">🔒</span>
+                        <h3 class="lotr-mini-card__title">Accès Restreints</h3>
+                        <p class="lotr-mini-card__text">
+                            Certaines salles ne s'ouvrent qu'aux élus. Les Claims définissent
+                            vos privilèges au sein de la Communauté avec une finesse absolue.
+                        </p>
                     </div>
-
-                    
-                    
-                   
                 </div>
             </div>
+
         </div>
+    </section>
+
+    <!-- ================================================================
+         CHOIX DES PEUPLES
+         ================================================================ -->
+    <section class="lotr-section lotr-section--alt" id="peuples">
+        <div class="container">
+
+            <div class="text-center lotr-reveal">
+                <span class="lotr-section__label">Les Peuples de la Terre du Milieu</span>
+                <h2 class="lotr-section__title">Choisissez votre Peuple</h2>
+                <div class="lotr-divider" aria-hidden="true"></div>
+                <p class="lotr-section__subtitle">
+                    Chaque peuple porte ses propres vertus, ses rôles et ses accès
+                    au sein du portail. Lequel êtes-vous ?
+                </p>
+            </div>
+
+            <div class="row g-4 mt-3 justify-content-center">
+
+                <!-- Gondor -->
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d1">
+                    <div class="lotr-people-card lotr-people-card--gondor">
+                        <div class="lotr-people-card__banner">
+                            <img src="~/images/banner-gondor.svg"
+                                 alt="Bannière de Gondor"
+                                 class="lotr-people-card__img" />
+                            <div class="lotr-people-card__overlay" aria-hidden="true"></div>
+                        </div>
+                        <div class="lotr-people-card__body">
+                            <span class="lotr-people-card__badge">Gondor</span>
+                            <h3 class="lotr-people-card__title">Guerriers du Gondor</h3>
+                            <p class="lotr-people-card__text">
+                                Défenseurs de Minas Tirith, gardiens de la Cité Blanche contre les forces du Mordor.
+                                Leur loyauté et leur bravoure sont sans égal dans toute la Terre du Milieu.
+                            </p>
+                            <ul class="lotr-people-card__roles" aria-label="Rôles disponibles">
+                                <li>Soldat</li>
+                                <li>Capitaine</li>
+                                <li>Intendant</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elfes -->
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d2">
+                    <div class="lotr-people-card lotr-people-card--elfes">
+                        <div class="lotr-people-card__banner">
+                            <img src="~/images/banner-elfes.svg"
+                                 alt="Bannière des Elfes"
+                                 class="lotr-people-card__img" />
+                            <div class="lotr-people-card__overlay" aria-hidden="true"></div>
+                        </div>
+                        <div class="lotr-people-card__body">
+                            <span class="lotr-people-card__badge">Elfes</span>
+                            <h3 class="lotr-people-card__title">Elfes Immortels</h3>
+                            <p class="lotr-people-card__text">
+                                Immortels et sages, venus de Lórien ou de la Forêt Noire.
+                                Gardiens des Archives d'Imladris et protecteurs des anciens savoirs.
+                            </p>
+                            <ul class="lotr-people-card__roles" aria-label="Rôles disponibles">
+                                <li>Archiviste</li>
+                                <li>Gardien</li>
+                                <li>Seigneur</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobbits -->
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d3">
+                    <div class="lotr-people-card lotr-people-card--hobbits">
+                        <div class="lotr-people-card__banner">
+                            <img src="~/images/banner-hobbits.svg"
+                                 alt="Bannière des Hobbits"
+                                 class="lotr-people-card__img" />
+                            <div class="lotr-people-card__overlay" aria-hidden="true"></div>
+                        </div>
+                        <div class="lotr-people-card__body">
+                            <span class="lotr-people-card__badge">Hobbits</span>
+                            <h3 class="lotr-people-card__title">Hobbits de la Comté</h3>
+                            <p class="lotr-people-card__text">
+                                Paisibles habitants de Hobbiton, Cul-de-Sac, Lézeau et Bouc-de-l'Est.
+                                Jardiniers, Cuisiniers et Messagers discrets porteurs de grands destins.
+                            </p>
+                            <ul class="lotr-people-card__roles" aria-label="Rôles disponibles">
+                                <li>Jardinier</li>
+                                <li>Cuisinier</li>
+                                <li>Messager</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         FONCTIONNALITÉS
+         ================================================================ -->
+    <section class="lotr-section" id="fonctionnalites">
+        <div class="container">
+
+            <div class="text-center lotr-reveal">
+                <span class="lotr-section__label">Fonctionnalités du portail</span>
+                <h2 class="lotr-section__title">Des Arts Anciens au Service de la Sécurité</h2>
+                <div class="lotr-divider" aria-hidden="true"></div>
+                <p class="lotr-section__subtitle">
+                    Bâti sur ASP.NET Core Identity, le portail offre des mécanismes
+                    éprouvés de gestion des identités, des rôles et des autorisations.
+                </p>
+            </div>
+
+            <div class="row g-4 mt-3">
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d1">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">🔐</span>
+                        <h3 class="lotr-feature-card__title">Authentification</h3>
+                        <p class="lotr-feature-card__text">
+                            Inscription sécurisée et connexion protégée par ASP.NET Core Identity.
+                            Hachage des mots de passe, cookies de session chiffrés et protection CSRF intégrée.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d2">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">👑</span>
+                        <h3 class="lotr-feature-card__title">Gestion des Rôles</h3>
+                        <p class="lotr-feature-card__text">
+                            Système hiérarchique de rôles par peuple. Les administrateurs peuvent
+                            attribuer, modifier et révoquer les rôles des habitants en temps réel.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d3">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">🗝️</span>
+                        <h3 class="lotr-feature-card__title">Accès par Claims</h3>
+                        <p class="lotr-feature-card__text">
+                            Contrôle fin des permissions via les Claims. Certaines salles et archives
+                            ne s'ouvrent qu'aux porteurs des Claims appropriés.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d1">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">🏛️</span>
+                        <h3 class="lotr-feature-card__title">Salle du Trône</h3>
+                        <p class="lotr-feature-card__text">
+                            Espace réservé aux Intendants et gouvernants du Gondor.
+                            Accès conditionné par le rôle et validé par les politiques d'autorisation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d2">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">📜</span>
+                        <h3 class="lotr-feature-card__title">Archives d'Imladris</h3>
+                        <p class="lotr-feature-card__text">
+                            Réservées aux Elfes archivistes. Ces salles protègent les savoirs anciens
+                            et les chroniques de la Terre du Milieu depuis l'Âge Premier.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 lotr-reveal lotr-reveal--d3">
+                    <div class="lotr-feature-card">
+                        <span class="lotr-feature-card__icon" aria-hidden="true">🛡️</span>
+                        <h3 class="lotr-feature-card__title">Camp des Capitaines</h3>
+                        <p class="lotr-feature-card__text">
+                            Quartier général des officiers du Gondor. L'accès est restreint
+                            aux porteurs du Claim <em>Capitaine</em> dûment accordé.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         CALL TO ACTION FINAL (affiché uniquement si non connecté)
+         ================================================================ -->
+    @if (User.Identity == null || !User.Identity.IsAuthenticated)
+    {
+        <section class="lotr-cta" id="inscription">
+            <div class="container lotr-reveal">
+                <h2 class="lotr-cta__title">Prêt à rejoindre la Communauté&nbsp;?</h2>
+                <p class="lotr-cta__text">
+                    Créez votre compte, choisissez votre peuple et découvrez
+                    les secrets de la Terre du Milieu.
+                </p>
+                <div class="lotr-cta__actions">
+                    <a asp-area="Identity" asp-page="/Account/Register" class="lotr-btn-primary">
+                        Commencer l'Aventure
+                    </a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="lotr-btn-outline">
+                        Se Connecter
+                    </a>
+                </div>
+            </div>
+        </section>
+    }
+
 </div>
+
+@section Scripts {
+    <script src="~/js/lotr-home.js" asp-append-version="true"></script>
+}

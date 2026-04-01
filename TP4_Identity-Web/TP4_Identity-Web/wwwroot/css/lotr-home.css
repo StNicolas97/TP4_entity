@@ -1,0 +1,663 @@
+/* ============================================================
+   LOTR HOME — Le Seigneur des Anneaux Theme
+   TP4 Identity — Terre du Milieu
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ---- CSS Custom Properties ---- */
+:root {
+    --lotr-bg-dark:        #08090f;
+    --lotr-bg-section:     #0d0f1a;
+    --lotr-bg-section-alt: #0a0c15;
+    --lotr-gold:           #c9a227;
+    --lotr-gold-light:     #e8c84a;
+    --lotr-gold-dark:      #8c6f1a;
+    --lotr-silver:         #a8b8c8;
+    --lotr-silver-dark:    #6a7a8a;
+    --lotr-text:           #e2d5bb;
+    --lotr-text-muted:     #8a9aaa;
+    --lotr-border:         rgba(201, 162, 39, 0.18);
+    --lotr-gondor:         #5a7fc0;
+    --lotr-elfes:          #5a9a70;
+    --lotr-hobbits:        #a07845;
+    --lotr-font-heading:   'Cinzel', 'Georgia', serif;
+    --lotr-font-body:      'Crimson Text', 'Georgia', serif;
+    --lotr-transition:     all 0.3s ease;
+    --lotr-shadow:         0 8px 32px rgba(0, 0, 0, 0.5);
+    --lotr-shadow-gold:    0 0 24px rgba(201, 162, 39, 0.14);
+    --lotr-navbar-h:       56px;
+}
+
+/* ---- Body overrides (scoped to homepage) ---- */
+.lotr-home-body {
+    background-color: var(--lotr-bg-dark);
+    color: var(--lotr-text);
+    font-family: var(--lotr-font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.lotr-home-body .footer {
+    background-color: #04050a;
+    border-top: 1px solid rgba(201, 162, 39, 0.12) !important;
+    color: var(--lotr-text-muted);
+}
+
+.lotr-home-body .footer a {
+    color: var(--lotr-gold);
+    text-decoration: none;
+    transition: var(--lotr-transition);
+}
+
+.lotr-home-body .footer a:hover {
+    color: var(--lotr-gold-light);
+}
+
+/* ---- Page Wrapper ---- */
+.lotr-page-wrapper {
+    background-color: var(--lotr-bg-dark);
+    overflow-x: hidden;
+}
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+
+.lotr-btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--lotr-gold-dark), var(--lotr-gold));
+    color: #08090f;
+    border: 1px solid var(--lotr-gold);
+    font-family: var(--lotr-font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: var(--lotr-transition);
+    cursor: pointer;
+}
+
+.lotr-btn-primary:hover,
+.lotr-btn-primary:focus {
+    background: linear-gradient(135deg, var(--lotr-gold), var(--lotr-gold-light));
+    color: #08090f;
+    box-shadow: 0 0 24px rgba(201, 162, 39, 0.45);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.lotr-btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--lotr-text);
+    border: 1px solid rgba(226, 213, 187, 0.35);
+    font-family: var(--lotr-font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: var(--lotr-transition);
+    cursor: pointer;
+}
+
+.lotr-btn-secondary:hover,
+.lotr-btn-secondary:focus {
+    border-color: var(--lotr-gold);
+    color: var(--lotr-gold);
+    box-shadow: 0 0 16px rgba(201, 162, 39, 0.18);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.lotr-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--lotr-silver);
+    border: 1px solid rgba(168, 184, 200, 0.4);
+    font-family: var(--lotr-font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: var(--lotr-transition);
+    cursor: pointer;
+}
+
+.lotr-btn-outline:hover,
+.lotr-btn-outline:focus {
+    border-color: var(--lotr-silver);
+    color: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* ================================================================
+   HERO SECTION
+   ================================================================ */
+
+.lotr-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--lotr-navbar-h);
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 18% 55%, rgba(90, 127, 192, 0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 82% 20%, rgba(201, 162, 39, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 95%, rgba(90, 154, 112, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, #03040a 0%, #080c18 50%, #05070e 100%);
+}
+
+/* Starfield dots */
+.lotr-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 12% 25%,  rgba(201, 162, 39, 0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 68% 15%,  rgba(168, 184, 200, 0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 72%,  rgba(201, 162, 39, 0.20) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 65%,  rgba(168, 184, 200, 0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at  8% 82%,  rgba(201, 162, 39, 0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 40%,  rgba(168, 184, 200, 0.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 38%,  rgba(201, 162, 39, 0.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 50%,  rgba(168, 184, 200, 0.10) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Fade to next section */
+.lotr-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent, var(--lotr-bg-dark));
+    pointer-events: none;
+}
+
+/* Decorative concentric rings */
+.lotr-hero__ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 162, 39, 0.055);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.lotr-hero__ring--sm { width: 480px;  height: 480px; }
+.lotr-hero__ring--md { width: 720px;  height: 720px; border-color: rgba(201, 162, 39, 0.035); }
+.lotr-hero__ring--lg { width: 980px;  height: 980px; border-color: rgba(201, 162, 39, 0.022); }
+.lotr-hero__ring--xl { width: 1260px; height: 1260px; border-color: rgba(201, 162, 39, 0.012); }
+
+.lotr-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    max-width: 820px;
+    width: 100%;
+}
+
+.lotr-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--lotr-font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--lotr-gold);
+    padding: 0.35rem 1.25rem;
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: 1px;
+    margin-bottom: 1.75rem;
+}
+
+.lotr-hero__title {
+    font-family: var(--lotr-font-heading);
+    font-size: clamp(2rem, 6.5vw, 4.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.12;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+}
+
+.lotr-hero__title-accent {
+    font-family: var(--lotr-font-heading);
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--lotr-gold);
+    display: block;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+}
+
+.lotr-hero__divider {
+    width: 90px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--lotr-gold), transparent);
+    margin: 0 auto 1.5rem;
+}
+
+.lotr-hero__desc {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--lotr-text-muted);
+    max-width: 540px;
+    margin: 0 auto 2.75rem;
+}
+
+.lotr-hero__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Scroll indicator */
+.lotr-hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lotr-hero__scroll-label {
+    font-family: var(--lotr-font-heading);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lotr-text-muted);
+}
+
+.lotr-hero__scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--lotr-gold-dark), transparent);
+    animation: lotr-scroll-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes lotr-scroll-pulse {
+    0%, 100% { opacity: 0.25; transform: scaleY(0.85); }
+    50%       { opacity: 0.75; transform: scaleY(1.15); }
+}
+
+/* ================================================================
+   SHARED SECTION STYLES
+   ================================================================ */
+
+.lotr-section {
+    padding: 5.5rem 0;
+}
+
+.lotr-section--alt {
+    background-color: var(--lotr-bg-section-alt);
+}
+
+.lotr-section__label {
+    display: block;
+    font-family: var(--lotr-font-heading);
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--lotr-gold);
+    margin-bottom: 0.9rem;
+}
+
+.lotr-section__title {
+    font-family: var(--lotr-font-heading);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+}
+
+.lotr-section__subtitle {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--lotr-text-muted);
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.lotr-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--lotr-gold), transparent);
+    margin: 1rem auto 2rem;
+}
+
+/* ================================================================
+   PRÉSENTATION — MINI CARDS
+   ================================================================ */
+
+.lotr-mini-card {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--lotr-border);
+    border-radius: 3px;
+    padding: 2.25rem 1.5rem;
+    text-align: center;
+    transition: var(--lotr-transition);
+    height: 100%;
+}
+
+.lotr-mini-card:hover {
+    background: rgba(201, 162, 39, 0.04);
+    border-color: rgba(201, 162, 39, 0.38);
+    transform: translateY(-5px);
+    box-shadow: var(--lotr-shadow-gold);
+}
+
+.lotr-mini-card__icon {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 1.1rem;
+}
+
+.lotr-mini-card__title {
+    font-family: var(--lotr-font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--lotr-gold);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.lotr-mini-card__text {
+    color: var(--lotr-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.65;
+}
+
+/* ================================================================
+   PEUPLES — PEOPLE CARDS
+   ================================================================ */
+
+.lotr-people-card {
+    background: var(--lotr-bg-section);
+    border: 1px solid var(--lotr-border);
+    border-radius: 3px;
+    overflow: hidden;
+    transition: var(--lotr-transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lotr-people-card:hover {
+    transform: translateY(-7px);
+}
+
+/* Per-people accent */
+.lotr-people-card--gondor  { border-top: 3px solid var(--lotr-gondor); }
+.lotr-people-card--elfes   { border-top: 3px solid var(--lotr-elfes);  }
+.lotr-people-card--hobbits { border-top: 3px solid var(--lotr-hobbits); }
+
+.lotr-people-card--gondor:hover  { box-shadow: 0 12px 40px rgba(90, 127, 192, 0.22); }
+.lotr-people-card--elfes:hover   { box-shadow: 0 12px 40px rgba(90, 154, 112, 0.22); }
+.lotr-people-card--hobbits:hover { box-shadow: 0 12px 40px rgba(160, 120, 69, 0.22); }
+
+/* Card banner */
+.lotr-people-card__banner {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background: #0a0c15;
+}
+
+.lotr-people-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s ease;
+}
+
+.lotr-people-card:hover .lotr-people-card__img {
+    transform: scale(1.06);
+}
+
+.lotr-people-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 35%, var(--lotr-bg-section) 100%);
+}
+
+/* Card body */
+.lotr-people-card__body {
+    padding: 1.5rem 1.6rem 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lotr-people-card__badge {
+    display: inline-block;
+    font-family: var(--lotr-font-heading);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 1px;
+    border: 1px solid;
+    margin-bottom: 0.9rem;
+}
+
+.lotr-people-card--gondor  .lotr-people-card__badge { color: var(--lotr-gondor);  border-color: var(--lotr-gondor);  background: rgba(90, 127, 192, 0.08); }
+.lotr-people-card--elfes   .lotr-people-card__badge { color: var(--lotr-elfes);   border-color: var(--lotr-elfes);   background: rgba(90, 154, 112, 0.08); }
+.lotr-people-card--hobbits .lotr-people-card__badge { color: var(--lotr-hobbits); border-color: var(--lotr-hobbits); background: rgba(160, 120, 69, 0.08);  }
+
+.lotr-people-card__title {
+    font-family: var(--lotr-font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.lotr-people-card__text {
+    color: var(--lotr-text-muted);
+    font-size: 0.95rem;
+    flex: 1;
+    margin-bottom: 1.25rem;
+    line-height: 1.65;
+}
+
+.lotr-people-card__roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.lotr-people-card__roles li {
+    font-family: var(--lotr-font-heading);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lotr-text-muted);
+    padding: 0.22rem 0.65rem;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 1px;
+}
+
+/* ================================================================
+   FONCTIONNALITÉS — FEATURE CARDS
+   ================================================================ */
+
+.lotr-feature-card {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--lotr-border);
+    border-radius: 3px;
+    padding: 2.25rem 1.75rem;
+    height: 100%;
+    transition: var(--lotr-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.lotr-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--lotr-gold), transparent);
+    opacity: 0;
+    transition: var(--lotr-transition);
+}
+
+.lotr-feature-card:hover {
+    background: rgba(201, 162, 39, 0.035);
+    border-color: rgba(201, 162, 39, 0.35);
+    transform: translateY(-5px);
+    box-shadow: var(--lotr-shadow-gold);
+}
+
+.lotr-feature-card:hover::before {
+    opacity: 1;
+}
+
+.lotr-feature-card__icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+.lotr-feature-card__title {
+    font-family: var(--lotr-font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--lotr-gold);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.lotr-feature-card__text {
+    color: var(--lotr-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ================================================================
+   CTA SECTION
+   ================================================================ */
+
+.lotr-cta {
+    padding: 5.5rem 0;
+    background:
+        linear-gradient(135deg, rgba(90, 127, 192, 0.04) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(90, 154, 112, 0.04) 0%, transparent 50%),
+        var(--lotr-bg-section-alt);
+    border-top: 1px solid var(--lotr-border);
+    text-align: center;
+}
+
+.lotr-cta__title {
+    font-family: var(--lotr-font-heading);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.lotr-cta__text {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--lotr-text-muted);
+    max-width: 480px;
+    margin: 0 auto 2.75rem;
+}
+
+.lotr-cta__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ================================================================
+   SCROLL REVEAL ANIMATION
+   ================================================================ */
+
+.lotr-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.lotr-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lotr-reveal--d1 { transition-delay: 0.10s; }
+.lotr-reveal--d2 { transition-delay: 0.20s; }
+.lotr-reveal--d3 { transition-delay: 0.30s; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 991px) {
+    .lotr-people-card { margin-bottom: 0; }
+}
+
+@media (max-width: 767px) {
+    .lotr-hero { min-height: 92vh; padding-top: var(--lotr-navbar-h); }
+    .lotr-section  { padding: 3.75rem 0; }
+    .lotr-cta      { padding: 3.75rem 0; }
+
+    .lotr-hero__ring { display: none; }
+
+    .lotr-people-card__banner { height: 140px; }
+    .lotr-mini-card    { padding: 1.75rem 1.25rem; }
+    .lotr-feature-card { padding: 1.75rem 1.25rem; }
+}
+
+@media (max-width: 575px) {
+    .lotr-hero__actions,
+    .lotr-cta__actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lotr-btn-primary,
+    .lotr-btn-secondary,
+    .lotr-btn-outline {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
