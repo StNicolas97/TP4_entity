@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace TP4_Identity_Web.Data
+namespace TP4_Identity_Web.Models
 {
     public class ApplicationUser : IdentityUser
     {
@@ -12,5 +12,7 @@ namespace TP4_Identity_Web.Data
         public string Nom { get; set; } = string.Empty;
 
         public string? Adresse { get; set; }
+
+
     }
 }

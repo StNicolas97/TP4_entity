@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd:*)",
+      "Bash(git -C \"TP4_Identity-Web\" ls-files)"
+    ]
+  }
+}

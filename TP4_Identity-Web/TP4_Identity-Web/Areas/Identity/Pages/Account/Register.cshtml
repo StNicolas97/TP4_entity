@@ -27,6 +27,102 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="mb-3">
+                <label asp-for="Input.Peuple" class="form-label">Peuple</label>
+                <select asp-for="Input.Peuple" class="form-control" id="Input_Peuple">
+                    <option value="">-- Choisir un peuple --</option>
+                    <option value="Gondor">Guerrier du Gondor</option>
+                    <option value="Elfe">Elfe</option>
+                    <option value="Hobbit">Hobbit</option>
+                </select>
+                <span asp-validation-for="Input.Peuple" class="text-danger"></span>
+            </div>
+
+            @* Champs communs *@
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Nom" class="form-control" placeholder="Nom" />
+                <label asp-for="Input.Nom">Nom</label>
+                <span asp-validation-for="Input.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Surnom" class="form-control" placeholder="Surnom" />
+                <label asp-for="Input.Surnom">Surnom</label>
+                <span asp-validation-for="Input.Surnom" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Adresse" class="form-control" placeholder="Adresse" />
+                <label asp-for="Input.Adresse">Adresse</label>
+                <span asp-validation-for="Input.Adresse" class="text-danger"></span>
+            </div>
+
+            @* Champs Gondor *@
+            <div id="section-gondor" style="display:none">
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.Rang" class="form-control">
+                        <option value="">-- Choisir un Rang --</option>
+                        <option value="Soldat">Soldat</option>
+                        <option value="Capitaine">Capitaine</option>
+                        <option value="Intendant">Intendant</option>
+                    </select>
+                    <label asp-for="Input.Rang">Rang</label>
+                    <span asp-validation-for="Input.Rang" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.Division" class="form-control">
+                        <option value="">-- Choisir une Division --</option>
+                        <option value="MinasTirith">Minas Tirith</option>
+                        <option value="Osgiliath">Osgiliath</option>
+                        <option value="Pelennor">Pelennor</option>
+                    </select>
+                    <label asp-for="Input.Division">Division</label>
+                    <span asp-validation-for="Input.Division" class="text-danger"></span>
+                </div>
+            </div>
+
+            @* Champs Elfe *@
+            <div id="section-elfe" style="display:none">
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.RoyaumeDorigine" class="form-control">
+                        <option value="">-- Choisir un Royaume --</option>
+                        <option value="Lorien">Lorien</option>
+                        <option value="ForetNoire">Forêt Noire</option>
+                    </select>
+                    <label asp-for="Input.RoyaumeDorigine">Royaume d'origine</label>
+                    <span asp-validation-for="Input.RoyaumeDorigine" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.AgeElfique" class="form-control" placeholder="Âge elfique" />
+                    <label asp-for="Input.AgeElfique">Âge elfique</label>
+                    <span asp-validation-for="Input.AgeElfique" class="text-danger"></span>
+                </div>
+            </div>
+
+            @* Champs Hobbit *@
+            <div id="section-hobbit" style="display:none">
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.VillageOrigine" class="form-control">
+                        <option value="">-- Choisir un Village --</option>
+                        <option value="Hobbiton">Hobbiton</option>
+                        <option value="CulDeSac">Cul-de-Sac</option>
+                        <option value="Lezeau">Lézeau</option>
+                        <option value="BoucDeLEst">Bouc-de-l’Est</option>
+                    </select>
+                    <label asp-for="Input.VillageOrigine">Village d'origine</label>
+                    <span asp-validation-for="Input.VillageOrigine" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <select asp-for="Input.MetierHobbit" class="form-control">
+                        <option value="">-- Choisir un Metier --</option>
+                        <option value="Jardinier">Jardinier</option>
+                        <option value="Agriculteur">Agriculteur</option>
+                        <option value="Cuisinier">Cuisinier,</option>
+                        <option value="Messager">Messager</option>
+                    </select>
+                    <label asp-for="Input.MetierHobbit">Métier</label>
+                    <span asp-validation-for="Input.MetierHobbit" class="text-danger"></span>
+                </div>
+            </div>
+
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
@@ -64,4 +160,25 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        function afficherSection(peuple) {
+            document.getElementById('section-gondor').style.display = 'none';
+            document.getElementById('section-elfe').style.display = 'none';
+            document.getElementById('section-hobbit').style.display = 'none';
+
+            if (peuple === 'Gondor') {
+                document.getElementById('section-gondor').style.display = 'block';
+            } else if (peuple === 'Elfe') {
+                document.getElementById('section-elfe').style.display = 'block';
+            } else if (peuple === 'Hobbit') {
+                document.getElementById('section-hobbit').style.display = 'block';
+            }
+        }
+
+        document.getElementById('Input_Peuple').addEventListener('change', function () {
+            afficherSection(this.value);
+        });
+
+        afficherSection(document.getElementById('Input_Peuple').value);
+    </script>
 }

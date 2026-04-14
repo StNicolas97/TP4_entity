@@ -21,4 +21,12 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TP4_Identity-Web\TP4_Identity-Web.csproj" />
+  </ItemGroup>
+
 </Project>
