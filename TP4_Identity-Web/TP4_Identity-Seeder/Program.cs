@@ -10,7 +10,7 @@ using var context = DbContextFactory.CreateDbContext();
 // --- Vidange des utilisateurs seed existants ---
 Console.WriteLine("Nettoyage des donnees existantes...");
 
-var seedEmails = new[] { "aragorn@gondor.gov", "legolas@lorien.gov", "frodo@comte.gov", "boromir@gondor.gov" };
+var seedEmails = new[] { "aragorn@gondor.gov", "haldir@lorien.gov", "sam@comte.gov", "boromir@gondor.gov" };
 var existingUsers = await context.Users.Where(u => seedEmails.Contains(u.Email!)).ToListAsync();
 var existingIds = existingUsers.Select(u => u.Id).ToList();
 
@@ -100,64 +100,64 @@ context.LesGuerriers.Add(new GuerrierDuGondor
 });
 context.UserRoles.Add(new IdentityUserRole<string> { UserId = boromir.Id, RoleId = roleCapitaine.Id });
 
-// --- Legolas (Habitant / Elfe - Lórien) ---
-Console.WriteLine("Creation de Legolas...");
+// --- Haldir (Capitaine / Elfe - Lórien) ---
+Console.WriteLine("Creation de Haldir...");
 
-var legolas = new ApplicationUser
+var haldir = new ApplicationUser
 {
     Id                 = Guid.NewGuid().ToString(),
-    UserName           = "legolas@lorien.gov",
-    NormalizedUserName = "LEGOLAS@LORIEN.GOV",
-    Email              = "legolas@lorien.gov",
-    NormalizedEmail    = "LEGOLAS@LORIEN.GOV",
+    UserName           = "haldir@lorien.gov",
+    NormalizedUserName = "HALDIR@LORIEN.GOV",
+    Email              = "haldir@lorien.gov",
+    NormalizedEmail    = "HALDIR@LORIEN.GOV",
     EmailConfirmed     = true,
-    Nom                = "Thranduil",
-    Surnom             = "Legolas",
+    Nom                = "Lorien",
+    Surnom             = "Haldir",
     SecurityStamp      = Guid.NewGuid().ToString(),
     ConcurrencyStamp   = Guid.NewGuid().ToString()
 };
-legolas.PasswordHash = hasher.HashPassword(legolas, "Lorien@1234!");
-context.Users.Add(legolas);
-context.UserClaims.Add(new IdentityUserClaim<string> { UserId = legolas.Id, ClaimType = "Peuple", ClaimValue = "Elfe" });
+haldir.PasswordHash = hasher.HashPassword(haldir, "Lorien@1234!");
+context.Users.Add(haldir);
+context.UserClaims.Add(new IdentityUserClaim<string> { UserId = haldir.Id, ClaimType = "Peuple", ClaimValue = "Elfe" });
 context.LesElfes.Add(new Elfe
 {
-    UserId          = legolas.Id,
-    RoyaumeDorigine = RoyaumeElfe.ForetNoire,
-    AgeElfique      = 2931
+    UserId          = haldir.Id,
+    RoyaumeDorigine = RoyaumeElfe.Lorien,
+    AgeElfique      = 2500
 });
-context.UserRoles.Add(new IdentityUserRole<string> { UserId = legolas.Id, RoleId = roleHabitant.Id });
+context.UserRoles.Add(new IdentityUserRole<string> { UserId = haldir.Id, RoleId = roleCapitaine.Id });
 
-// --- Frodo (Habitant / Hobbit - Hobbiton) ---
-Console.WriteLine("Creation de Frodo...");
+// --- Sam (Habitant / Hobbit - Hobbiton) ---
+Console.WriteLine("Creation de Sam...");
 
-var frodo = new ApplicationUser
+var sam = new ApplicationUser
 {
     Id                 = Guid.NewGuid().ToString(),
-    UserName           = "frodo@comte.gov",
-    NormalizedUserName = "FRODO@COMTE.GOV",
-    Email              = "frodo@comte.gov",
-    NormalizedEmail    = "FRODO@COMTE.GOV",
+    UserName           = "sam@comte.gov",
+    NormalizedUserName = "SAM@COMTE.GOV",
+    Email              = "sam@comte.gov",
+    NormalizedEmail    = "SAM@COMTE.GOV",
     EmailConfirmed     = true,
-    Nom                = "Sacquet",
-    Surnom             = "Frodo",
+    Nom                = "Gamegie",
+    Surnom             = "Sam",
     SecurityStamp      = Guid.NewGuid().ToString(),
     ConcurrencyStamp   = Guid.NewGuid().ToString()
 };
-frodo.PasswordHash = hasher.HashPassword(frodo, "Comte@1234!");
-context.Users.Add(frodo);
-context.UserClaims.Add(new IdentityUserClaim<string> { UserId = frodo.Id, ClaimType = "Peuple", ClaimValue = "Hobbit" });
+sam.PasswordHash = hasher.HashPassword(sam, "Comte@1234!");
+context.Users.Add(sam);
+context.UserClaims.Add(new IdentityUserClaim<string> { UserId = sam.Id, ClaimType = "Peuple", ClaimValue = "Hobbit" });
 context.LesHobbits.Add(new HobbitComte
 {
-    UserId         = frodo.Id,
+    UserId         = sam.Id,
     VillageOrigine = VillageHobbit.Hobbiton,
-    MetierHobbit   = MetierHobbit.Messager
+    MetierHobbit   = MetierHobbit.Jardinier
 });
-context.UserRoles.Add(new IdentityUserRole<string> { UserId = frodo.Id, RoleId = roleHabitant.Id });
+context.UserRoles.Add(new IdentityUserRole<string> { UserId = sam.Id, RoleId = roleHabitant.Id });
 
 await context.SaveChangesAsync();
 
 Console.WriteLine("Seed termine avec succes!");
-Console.WriteLine($"  aragorn@gondor.gov  -> Roi       (Aragorn Elessar)   | Mot de passe : Gondor@1234!");
-Console.WriteLine($"  boromir@gondor.gov  -> Capitaine (Boromir Denethor)  | Mot de passe : Gondor@1234!");
-Console.WriteLine($"  legolas@lorien.gov  -> Habitant  (Legolas Thranduil) | Mot de passe : Lorien@1234!");
-Console.WriteLine($"  frodo@comte.gov     -> Habitant  (Frodo Sacquet)     | Mot de passe : Comte@1234!");
+Console.WriteLine($"  aragorn@gondor.gov  -> Roi       (Aragorn Elessar)  | Mot de passe : Gondor@1234!");
+Console.WriteLine($"  boromir@gondor.gov  -> Capitaine (Boromir Denethor) | Mot de passe : Gondor@1234!");
+Console.WriteLine($"  haldir@lorien.gov   -> Capitaine (Haldir Lorien)    | Mot de passe : Lorien@1234!");
+Console.WriteLine($"  sam@comte.gov       -> Habitant  (Sam Gamegie)      | Mot de passe : Comte@1234!");

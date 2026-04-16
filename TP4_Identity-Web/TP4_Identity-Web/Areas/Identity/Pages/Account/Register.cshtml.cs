@@ -33,12 +33,14 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
             ApplicationDbContext context)
         {
@@ -49,6 +51,7 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _context = context;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -131,14 +134,14 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
             [Display(Name = "Royaume d'origine")]
             public RoyaumeElfe? RoyaumeDorigine { get; set; }
 
-            [Display(Name = "Âge elfique")]
+            [Display(Name = "ï¿½ge elfique")]
             public int? AgeElfique { get; set; }
 
             // Champs Hobbit
             [Display(Name = "Village d'origine")]
             public VillageHobbit? VillageOrigine { get; set; }
 
-            [Display(Name = "Métier")]
+            [Display(Name = "Mï¿½tier")]
             public MetierHobbit? MetierHobbit { get; set; }
         }
 
@@ -168,13 +171,14 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
                 user.Nom = Input.Nom;
                 user.Surnom = Input.Surnom;
                 user.Adresse = Input.Adresse;
+                user.EmailConfirmed = true;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    // Création de l'utilisateur spécialisé
+                    // Crï¿½ation de l'utilisateur spï¿½cialisï¿½
                     var userId = await _userManager.GetUserIdAsync(user);
 
                     if (Input.Peuple == "Gondor")
@@ -211,39 +215,23 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
                     
                     await _userManager.AddClaimAsync(user, new Claim("Peuple", Input.Peuple));
 
-                    string role;
-                    if (Input.Peuple == "Gondor" && Input.Rang == RangGondor.Intendant)
-                        role = Roles.Roi;
-                    else if (Input.Peuple == "Gondor" && Input.Rang == RangGondor.Capitaine)
-                        role = Roles.Capitaine;
-                    else
-                        role = Roles.Habitant;
+                    //string role;
+                    //if (Input.Peuple == "Gondor" && Input.Rang == RangGondor.Intendant)
+                    //    role = Roles.Roi;
+                    //else if (Input.Peuple == "Gondor" && Input.Rang == RangGondor.Capitaine)
+                    //    role = Roles.Capitaine;
+                    //else
+                    //    role = Roles.Habitant;
 
-                    await _userManager.AddToRoleAsync(user, role);
+                    if (!await _roleManager.RoleExistsAsync(Roles.Habitant))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Habitant));
 
-                    _logger.LogInformation("User created a new account with password.");
+                    await _userManager.AddToRoleAsync(user, Roles.Habitant);
 
-                    //var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    _logger.LogInformation("Nouveau compte crÃ©Ã© avec succÃ¨s.");
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Index", "Home");
-                    }
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -283,14 +271,14 @@ namespace TP4_Identity_Web.Areas.Identity.Pages.Account
                 if (Input.RoyaumeDorigine == null)
                     ModelState.AddModelError("Input.RoyaumeDorigine", "Le royaume est obligatoire.");
                 if (Input.AgeElfique == null || Input.AgeElfique <= 0)
-                    ModelState.AddModelError("Input.AgeElfique", "L'âge elfique est obligatoire.");
+                    ModelState.AddModelError("Input.AgeElfique", "L'age elfique est obligatoire.");
             }
             else if (Input.Peuple == "Hobbit")
             {
                 if (Input.VillageOrigine == null)
                     ModelState.AddModelError("Input.VillageOrigine", "Le village est obligatoire.");
                 if (Input.MetierHobbit == null)
-                    ModelState.AddModelError("Input.MetierHobbit", "Le métier est obligatoire.");
+                    ModelState.AddModelError("Input.MetierHobbit", "Le metier est obligatoire.");
             }
         }
 

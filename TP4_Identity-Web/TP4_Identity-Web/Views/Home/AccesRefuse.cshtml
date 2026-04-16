@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Accès Refusé";
+}
+
+<div class="container mt-4">
+    <h1 class="text-danger">@ViewData["Title"] — 403</h1>
+    <hr />
+    <div class="alert alert-danger">
+        <strong>Vous n'avez pas les permissions nécessaires pour accéder à cette page.</strong>
+    </div>
+    <p>Cette salle est réservée aux membres ayant les droits requis. Contactez un administrateur si vous pensez que c'est une erreur.</p>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Retour à l'accueil</a>
+</div>

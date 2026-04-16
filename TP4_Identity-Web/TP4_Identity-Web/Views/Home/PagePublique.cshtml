@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Page Publique";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="alert alert-light border">
+        <strong>Accessible à tous, sans connexion requise.</strong>
+    </div>
+    <p>Bienvenue sur le portail de la Terre du Milieu. Inscrivez-vous pour rejoindre la Communauté et accéder aux espaces réservés.</p>
+    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Rejoindre la Communauté</a>
+    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-secondary ms-2">Se Connecter</a>
+</div>
